@@ -1,6 +1,6 @@
 /**
 * node module -> Base64, created by victorfern91 (a.k.a Victor Fernandes - victorfern91[at]gmail.com)
-* Module Version : 1.0.0 (1/04/2015 -> Ahahah, April's Fools!)
+* Module Version : 0.1.1
 * Avaiable Functions : encoding & decoding
 * Outputs: Coded string or Decoded string, using Base64
 */
