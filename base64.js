@@ -2,11 +2,11 @@
 * node module -> Base64, created by victorfern91 (a.k.a Victor Fernandes - victorfern91[at]gmail.com)
 * Module Version : 1.0.0 (1/04/2015 -> Ahahah, April's Fools!)
 * Avaiable Functions : encoding & decoding
-* Outputs: Codified String in Base64 or Decode String, codified in Base64
+* Outputs: Coded string or Decoded string, using Base64
 */
 var base64 = function () {};
 
-var encodeDictionary =['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9','+','/'];
+var encodeDictionary ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 /**
 * encode function() - public method
@@ -77,6 +77,7 @@ module.exports = new base64();
 
 /**
 * encoding block
+* Update: Changed binary masks into Hexadecimal
 */
 function encodingBlock(slice){
 	var encodedSlice = '';
@@ -87,18 +88,15 @@ function encodingBlock(slice){
 				encodedSlice += encodeDictionary[charOne];
 				break;
 			case 1:
-				// 3 = parseInt('00000011',2) (binary mask)
-				var charTwo = (slice.charCodeAt(j-1) & 3) << 4;
-				//convert 240 to binary to get the mask used
-				charTwo += (slice.charCodeAt(j) & 240) >> 4 ;
+				var charTwo = (slice.charCodeAt(j-1) & 0x3) << 4;
+				charTwo += (slice.charCodeAt(j) & 0xF0) >> 4 ;
 				encodedSlice += encodeDictionary[charTwo];
-				var charThree = (slice.charCodeAt(j) & 15) << 2;
-				charThree += (slice.charCodeAt(j+1) & 192) >> 6;
+				var charThree = (slice.charCodeAt(j) & 0xF) << 2;
+				charThree += (slice.charCodeAt(j+1) & 0xC0) >> 6;
 				encodedSlice += encodeDictionary[charThree];
 				break;
 			case 2:
-				// binary mask 00111111 =>  63
-				var charFour = slice.charCodeAt(j) & 63;
+				var charFour = slice.charCodeAt(j) & 0x3F;
 				encodedSlice += encodeDictionary[charFour];
 				break;
 		}
@@ -107,7 +105,9 @@ function encodingBlock(slice){
 }
 
 /**
-* decodingBlock
+* decodingBlock 
+* This method receive 4-byte encoded slice and decode to 3 char string. 
+* Update: Changed binary masks into Hexadecimal
 */
 function decodingBlock(slice){
 	var decodeSlice = '';
@@ -115,17 +115,17 @@ function decodingBlock(slice){
 		switch(j%4){
 			case 0:
 				var charNumberOne = encodeDictionary.indexOf(slice[j]) << 2;
-				charNumberOne += (encodeDictionary.indexOf(slice[j+1]) & 48) >> 4;
+				charNumberOne += (encodeDictionary.indexOf(slice[j+1]) & 0x30) >> 4;
 				decodeSlice += String.fromCharCode(charNumberOne);
 				break;
 			case 1:
-				var charNumberTwo = (encodeDictionary.indexOf(slice[j]) & 15) << 4;
-				charNumberTwo  += (encodeDictionary.indexOf(slice[j+1]) & 60) >> 2;
+				var charNumberTwo = (encodeDictionary.indexOf(slice[j]) & 0xF) << 4;
+				charNumberTwo  += (encodeDictionary.indexOf(slice[j+1]) & 0x3C) >> 2;
 				decodeSlice += String.fromCharCode(charNumberTwo);
 				break;
 			case 2:
-				var charNumberThree = (encodeDictionary.indexOf(slice[j]) & 3) << 6;
-				charNumberThree  += (encodeDictionary.indexOf(slice[j+1]) & 63);
+				var charNumberThree = (encodeDictionary.indexOf(slice[j]) & 0x3) << 6;
+				charNumberThree  += (encodeDictionary.indexOf(slice[j+1]) & 0x3F);
 				decodeSlice += String.fromCharCode(charNumberThree);
 				break;
 		}
