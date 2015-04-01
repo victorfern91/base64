@@ -11,7 +11,7 @@ var base64 = require('base64');
 ### Available functions and their descriptions
 | Module Functions | Description | Usage| Completed |
 | ---------------- | ----------- | ---- | ---------- |
-| encode(string)  | Encoding function | base64.encode('victorfern91');  | 65 % | 
+| encode(string)  | Encoding function | base64.encode('victorfern91');  | 100 % | 
 | printHello(string) | This is only for test purposes  | base64.printHello('Victor') | 100% |
 
 #### Run example
