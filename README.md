@@ -3,7 +3,7 @@ This is my first npm module.
 This modules can be used to encoding & decoding strings using base64.
 <center><a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a></center>
 
-## Why using this module?
+## Why use this module?
 This module contains private and public methods, it's minimalist, and focused in the best javascript performance.
 
 ## How to use?
@@ -41,5 +41,5 @@ Read this: http://en.wikipedia.org/wiki/Base64
 
 ## Future updates:
 - encode and decode files;
-- add compability with MIME, and other standards (RFC ****, etc). 
+- add compatibility with MIME, and other standards (RFC ****, etc). 
 - Unit Tests
