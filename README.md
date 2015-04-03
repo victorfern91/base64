@@ -42,3 +42,4 @@ Read this: http://en.wikipedia.org/wiki/Base64
 ## Future updates:
 - encode and decode files;
 - add compability with MIME, and other standards (RFC ****, etc). 
+- Unit Tests
