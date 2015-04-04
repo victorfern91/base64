@@ -1,17 +1,20 @@
 /**
 * node module -> Base64, created by victorfern91 (a.k.a Victor Fernandes - victorfern91[at]gmail.com)
-* Module Version : 0.1.1
+* Module Version : 0.2.0
 * Avaiable Functions : encoding & decoding
 * Outputs: Coded string or Decoded string, using Base64
 */
+
 var base64 = function () {};
 
 var encodeDictionary ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+// for file function
+var fs = require('fs');
 
 /**
 * encode function() - public method
 */
-base64.prototype.encode = function (str) {
+base64.prototype.encode = function (str){
 	var encodedString = '';
 	// First step, divid the input bytes streams into blocks of 3 bytes.
 	var inputSliced = [];
@@ -20,28 +23,28 @@ base64.prototype.encode = function (str) {
 	}
 	//encode all 3 byte blocks
 	for(i = 0, length = inputSliced.length; i < length; i++){
-			if ((inputSliced[i].length % 3) === 0){
-			//if block contain 3 bytes
-			encodedString += encodingBlock(inputSliced[i]);
-		} else { // if block don't have 3 bytes
-			switch(inputSliced[i].length){
-				case 1:
-					inputSliced[i] += '\0\0';
-					var encoded = encodingBlock(inputSliced[i]);
-					//add '=''=' 
-					encoded = setCharAt(encoded,2,'=');
-					encoded = setCharAt(encoded,3,'=');
-					encodedString += encoded;
-				break;
-				case 2:
-					inputSliced[i] += '\0';
-					var encoded = encodingBlock(inputSliced[i]);
-					// add = 
-					encoded = setCharAt(encoded,3,'=');
-					encodedString += encoded;
-				break;
-			}
-		}
+		encodedString += encodingSystem(inputSliced[i]);
+	} 
+	return encodedString;
+};
+
+/**
+* encodeFile function() - public method
+* Only tested with the PNG Files  
+*/
+base64.prototype.encodeFile = function (file){
+	var inputData = fs.readFileSync(file);
+	var fileToStr = '';
+	for(i = 0; i < inputData.length; i++){
+		fileToStr += String.fromCharCode(inputData[i]);
+	}
+	var inputSliced = [];
+	for(i = 0, length = fileToStr.length; i < length; i = i + 3){
+		inputSliced.push(fileToStr.slice(i,i+3));
+	}
+	var encodedString='';
+	for(i = 0, length = inputSliced.length; i < length; i++){
+		encodedString += encodingSystem(inputSliced[i]);
 	} 
 	return encodedString;
 };
@@ -49,7 +52,7 @@ base64.prototype.encode = function (str) {
 /**
 * decode function() - public method
 */
-base64.prototype.decode = function (str) {
+base64.prototype.decode = function (str){
 	// reverse process
 	var inputSliced = [];
 	var stringLength = str.length;
@@ -71,12 +74,51 @@ base64.prototype.decode = function (str) {
 
 };
 
+/**
+* decodeFile function() - public method
+* Only tested with the PNG Files  
+*/
+base64.prototype.decodeSaveFile = function (str, filePath){
+	// reverse process
+	var data = this.decode(str);
+	fs.writeFileSync(filePath,data,'binary');
+};
+
 module.exports = new base64();
 
-//Helpers (Private functions)
+//Functions Helpers (Private functions)
 
 /**
-* encoding block
+* encodingSystem - private function
+*/
+function encodingSystem(slice){
+	var sliceLength = slice.length;
+	var encoded = '';
+	//if this slice/block have 3 byetes
+	if(sliceLength === 3){
+		return encodingBlock(slice);
+	} else { // if slice/block doesn't have 3 bytes
+		switch(sliceLength){
+			case 1:
+				slice += '\0\0';
+				encoded = encodingBlock(slice);
+				//add '=''=' 
+				encoded = setCharAt(encoded,2,'=');
+				encoded = setCharAt(encoded,3,'=');
+				break;
+			case 2:
+				inputSliced[i] += '\0';
+				encoded = encodingBlock(slice);
+				// add = 
+				encoded = setCharAt(encoded,3,'=');
+				break;
+		}
+	}
+	return encoded;
+}
+
+/**
+* encoding block - private function
 * Update: Changed binary masks into Hexadecimal
 */
 function encodingBlock(slice){
@@ -105,7 +147,7 @@ function encodingBlock(slice){
 }
 
 /**
-* decodingBlock 
+* decodingBlock - private function
 * This method receive 4-byte encoded slice and decode to 3 char string. 
 * Update: Changed binary masks into Hexadecimal
 */
@@ -134,7 +176,7 @@ function decodingBlock(slice){
 }
 
 /**
-* setCharAt
+* setCharAt - private function
 */
 function setCharAt(str,index,chr) {
 	if(index > str.length-1) return str;

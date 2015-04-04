@@ -18,12 +18,13 @@ var base64 = require('base64-min');
 | ---------------- | ----------- | ---- | ---------- |
 | **encode(string)**  | **Input:** Plain Text String (RAW format);</br> **Output:** Encoded String | base64.encode('tutorial')  | 100 % | 
 | **decode(string)**  | **Input:** Base64 Encoded String;</br> **Output:** Plain Text and Decoded String | base64.decode('dHV0b3JpYWw=') | 100 % |
-| printHello(string) | This is only for testing purposes  | base64.printHello('Victor') | **deleted** |
+| **encodeFile(string)**  | **Input:** File Path;</br> **Output:** Encoded String | base64.encodeFile('image1.png')  | 100 % | 
+| **decodeFileSave(string)**  | **Inputs:** Encoded string, File Path;</br> **Output:** File Decoded | base64.decode('aBCde0+...sdQ==', 'result.png') | 100 % |
 
-#### Install npm module
+#### Install base64-min module
 At cmd, type:
 ```
-$ npm install base64-min 
+$ npm install base64-min
 ```
 or to install this package globally, use:
 
@@ -36,10 +37,13 @@ $ npm install -g base64-min
 ```
 $ node node_modules/base64-min/test.js
 ```
-## How Base64 works?
-Read this: http://en.wikipedia.org/wiki/Base64
+
+### Changelog
+**v0.2.0 :**
+- encode process more modular (added one more private function). 
+- added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
 
 ## Future updates:
-- encode and decode files;
+- <s>encode and decode files</s>;
 - add compatibility with MIME, and other standards (RFC ****, etc). 
 - Unit Tests
