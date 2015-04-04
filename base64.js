@@ -107,7 +107,7 @@ function encodingSystem(slice){
 				encoded = setCharAt(encoded,3,'=');
 				break;
 			case 2:
-				inputSliced[i] += '\0';
+				slice += '\0';
 				encoded = encodingBlock(slice);
 				// add = 
 				encoded = setCharAt(encoded,3,'=');

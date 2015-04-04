@@ -1,5 +1,5 @@
 //get node module
-var b64 = require('base64-min');
+var b64 = require('./base64');
 
 var rawMessage = 'base64-min npm module';
 console.log('Original Message :', rawMessage);
