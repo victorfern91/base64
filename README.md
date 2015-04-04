@@ -41,6 +41,7 @@ $ node node_modules/base64-min/test.js
 ### Changelog
 **v0.2.1 :**
 - bug fix in encodingSystem function.
+
 **v0.2.0 :**
 - encode process more modular (added one more private function). 
 - added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
