@@ -41,7 +41,7 @@ $ node node_modules/base64-min/test.js
 ### Changelog
 **v0.2.2 :**
 - Minor changes, to improve JavaScript performance.
-- **Important! *decodeSaveFile* function name changed to *decodeToFile*. **
+- **Important! decodeSaveFile function name changed to decodeToFile. **
 
 **v0.2.1 :**
 - bug fix in encodingSystem function.
