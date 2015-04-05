@@ -19,7 +19,7 @@ var base64 = require('base64-min');
 | **encode(string)**  | **Input:** Plain Text String (RAW format);</br> **Output:** Encoded String | base64.encode('tutorial')  | 100 % | 
 | **decode(string)**  | **Input:** Base64 Encoded String;</br> **Output:** Plain Text and Decoded String | base64.decode('dHV0b3JpYWw=') | 100 % |
 | **encodeFile(filepath)**  | **Input:** File Path;</br> **Output:** Encoded String | base64.encodeFile('image1.png')  | 100 % | 
-| **decodeSaveFile(string, filepath)**  | **Inputs:** Encoded string, File Path;</br> **Output:** File Decoded | base64.decode('ZGF0YQ==', 'res.png') | 100 % |
+| **decodeToFile(string, filepath)**  | **Inputs:** Encoded string, File Path;</br> **Output:** File Decoded | base64.decodeToFile('ZGF0YQ==', 'res.png') | 100 % |
 
 #### Install base64-min module
 At cmd, type:
@@ -39,6 +39,10 @@ $ node node_modules/base64-min/test.js
 ```
 
 ### Changelog
+**v0.2.2 :**
+- Minor changes, to improve JavaScript performance.
+- **Important! *decodeSaveFile* function name changed to *decodeToFile*. **
+
 **v0.2.1 :**
 - bug fix in encodingSystem function.
 

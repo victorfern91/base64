@@ -78,7 +78,7 @@ base64.prototype.decode = function (str){
 * decodeFile function() - public method
 * Only tested with the PNG Files  
 */
-base64.prototype.decodeSaveFile = function (str, filePath){
+base64.prototype.decodeToFile = function (str, filePath){
 	// reverse process
 	var data = this.decode(str);
 	fs.writeFileSync(filePath,data,'binary');
@@ -124,7 +124,7 @@ function encodingSystem(slice){
 function encodingBlock(slice){
 	var encodedSlice = '';
 	for(j = 0, sliceLength = slice.length; j < sliceLength; j++){
-		switch(j%3){
+		switch(j){
 			case 0:
 				var charOne = (slice.charCodeAt(j)) >> 2;
 				encodedSlice += encodeDictionary[charOne];
@@ -154,7 +154,7 @@ function encodingBlock(slice){
 function decodingBlock(slice){
 	var decodeSlice = '';
 	for(j = 0, length = slice.length; j < length; j++){
-		switch(j%4){
+		switch(j){
 			case 0:
 				var charNumberOne = encodeDictionary.indexOf(slice[j]) << 2;
 				charNumberOne += (encodeDictionary.indexOf(slice[j+1]) & 0x30) >> 4;
