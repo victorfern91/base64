@@ -81,7 +81,7 @@ base64.prototype.decode = function (str){
 		decodedString += decodingBlock(inputSliced[i]);
 	}
 	//last slice
-	if(str.slice(-2) === '='){
+	if(str.slice(-1) === '='){
 		decodedString = decodedString.slice(0,decodedString.length-1);
 	}
 	//result
@@ -94,21 +94,15 @@ base64.prototype.decode = function (str){
 * decode Messages with one key XOR 
 */
 base64.prototype.decodeWithKey = function(str, key){
-	console.log(str);
 	var b64Decoded = this.decode(str);
-	console.log(b64Decoded);
 	var keyLength = key.length;
 	var decodedString = '';
 	for(i = 0, length = b64Decoded.length; i < length; i ++ ){
 		 decodedString += String.fromCharCode( b64Decoded.charCodeAt(i)  ^  key.charCodeAt(i%keyLength));
 	}
 	if(str.slice(-2) === '=='){
-		decodedString = decodedString.slice(0,decodedString.length-2);
-	} else {
-		if(str.slice(-1) === ''){
-			decodedString = decodedString.slice(0,decodedString.length-1);
-		}
-	}
+		decodedString = decodedString.slice(0,decodedString.length-1);
+	} 
 	return decodedString;
 }
 
