@@ -90,13 +90,11 @@ or to install this package globally, use:
 $ npm install -g base64-min 
 ```
 
-##### Run example
-
-```
-$ node node_modules/base64-min/test.js
-```
-
 ### Changelog
+**v0.4.0**
+- Added Unit Tests (To run tests use command ```npm tes```t after module install).
+- Bug fix in decode process.
+
 **v0.3.0 :**
 - Added more two new functions: **encodeWithKey** and **decodeWithKey** (XOR Encryption - Fast and "Secure").
 
@@ -113,4 +111,3 @@ $ node node_modules/base64-min/test.js
 
 ## Future updates:
 - Add compatibility with MIME, and other standards (RFC ****, etc). 
-- Unit Tests
