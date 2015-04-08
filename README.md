@@ -108,6 +108,9 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
+**v0.4.1**
+- Updated README.md
+
 **v0.4.0**
 - Added Unit Tests (To run tests use command ```npm test``` after module install).
 - Bug fix in decode process.
