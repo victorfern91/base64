@@ -75,9 +75,9 @@ base64.encodeWithKey('base64-min npm module', 'victorfern91'); // result = FAgQE
 - **Example :**
 ```javascript
 //Decoding with wrong key
-base64.decodeWithKey(FAgQEVlGSwgbABlfBgRDGQAWEwkX, 'npm module'); // result = zx}14)/}wew/k$.vdcly
+base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'npm module'); // result = zx}14)/}wew/k$.vdcly
 //Decoding with correct key
-base64.decodeWithKey(FAgQEVlGSwgbABlfBgRDGQAWEwkX, 'victorfern91'); // result = base64-min npm module
+base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result = base64-min npm module
 ```
 #### Install base64-min module
 At cmd, type:
