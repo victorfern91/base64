@@ -1,6 +1,6 @@
 {
   "name": "base64-min",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Minimalist package, focused in best performance to encode and decode base64.",
   "main": "base64.js",
   "dependencies": {},
@@ -14,8 +14,13 @@
   },
   "keywords": [
     "base64",
-    "npm",
-    "node"
+    "minimal",
+    "files",
+    "encryption",
+    "fast",
+    "crypto",
+    "xor",
+    "cipher"
   ],
   "author": "Victor Fernandes <victorfern91@gmail.com>",
   "license": "MIT",
