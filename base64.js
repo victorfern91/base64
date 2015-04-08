@@ -57,7 +57,7 @@ base64.prototype.encodeFile = function (file){
 	for(i = 0, length = fileToStr.length; i < length; i = i + 3){
 		inputSliced.push(fileToStr.slice(i,i+3));
 	}
-	var encodedString='';
+	var encodedString= '';
 	for(i = 0, length = inputSliced.length; i < length; i++){
 		encodedString += encodingSystem(inputSliced[i]);
 	} 
@@ -84,6 +84,9 @@ base64.prototype.decode = function (str){
 	if(str.slice(-1) === '='){
 		decodedString = decodedString.slice(0,decodedString.length-1);
 	}
+	if(str.slice(-2) === '=='){
+		decodedString = decodedString.slice(0,decodedString.length-1);
+	}
 	//result
 	return decodedString;
 
@@ -100,9 +103,9 @@ base64.prototype.decodeWithKey = function(str, key){
 	for(i = 0, length = b64Decoded.length; i < length; i ++ ){
 		 decodedString += String.fromCharCode( b64Decoded.charCodeAt(i)  ^  key.charCodeAt(i%keyLength));
 	}
-	if(str.slice(-2) === '=='){
+	/*if(str.slice(-2) === '=='){
 		decodedString = decodedString.slice(0,decodedString.length-1);
-	} 
+	}*/
 	return decodedString;
 }
 
