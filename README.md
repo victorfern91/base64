@@ -25,8 +25,15 @@ $ npm install -g base64-min
 ### After install run unit tests
 
 ```
+$ cd ./node_modules/base64-min/
+$ npm install
 $ npm test 
 ```
+<img src="http://i.imgur.com/U7rayiT.png"/>
+
+### And run tutorial
+$ cd ./node_modules/base64-min/
+$ node tutorial.js
 
 ## How to use?
 To load module functionalities, you must use the require.js properties integrated in node.js.
