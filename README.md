@@ -10,6 +10,24 @@ Actually **base64-min** can encode and decode: **strings**, **files** and **stri
 ## Why use this module?
 This module contains private and public methods, it's minimalist, and focused in the best javascript performance.
 
+
+### Install base64-min module
+At cmd, type:
+```
+$ npm install base64-min
+```
+or to install this package globally, use:
+
+```
+$ npm install -g base64-min 
+```
+
+### After install run unit tests
+
+```
+$ npm test 
+```
+
 ## How to use?
 To load module functionalities, you must use the require.js properties integrated in node.js.
 
@@ -79,20 +97,10 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'npm module'); // result = 
 //Decoding with correct key
 base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result = base64-min npm module
 ```
-#### Install base64-min module
-At cmd, type:
-```
-$ npm install base64-min
-```
-or to install this package globally, use:
-
-```
-$ npm install -g base64-min 
-```
 
 ### Changelog
 **v0.4.0**
-- Added Unit Tests (To run tests use command ```npm tes```t after module install).
+- Added Unit Tests (To run tests use command ```npm test``` after module install).
 - Bug fix in decode process.
 
 **v0.3.0 :**
