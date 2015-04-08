@@ -1,7 +1,11 @@
 # base64 (npm base64-min)
-This is my first npm module.
-This modules can be used to encoding & decoding strings using base64.
-<center><a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a></center>
+
+This modules can be used to encoding & decoding messages (strings) and files using base64.
+
+I'm trying to add new features based in other packages to get an AIO npm module.
+Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encryptation**.
+
+<a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a>
 
 ## Why use this module?
 This module contains private and public methods, it's minimalist, and focused in the best javascript performance.
@@ -18,7 +22,7 @@ var base64 = require('base64-min');
 ##### encode (str)
 This method is used to encode a plain-text string to a encoded string in base64.
 - **Arguments :**
-- ```str``` The string you want to encode.
+- ```str``` - The string you want to encode.
 - **Result :**  Encoded string in base64.
 - **Example :**
 ```javascript
@@ -27,7 +31,7 @@ base64.encode('base64-min npm module'); // result = YmFzZTY0LW1pbiBucG0gbW9kdWxl
 ##### decode (str)
 This method is used to decode a the base64 message to a plain-text string.
 - **Arguments :**
-- ```str``` The message (in base64) you want to decode.
+- ```str``` - The message (in base64) you want to decode.
 - **Result :**  Our message decoded in plain-text.
 - **Example :**
 ```javascript
@@ -36,7 +40,7 @@ base64.encode('YmFzZTY0LW1pbiBucG0gbW9kdWxl'); // result = base64-min npm module
 ##### encodeFile(file)
 This method is used to encode files into base64 string.
 - **Arguments :**
-- ```file``` The file path of the you want to encode.
+- ```file``` - The file path of the you want to encode.
 - **Result :**  Encoded File into a string in base64.
 - **Example :**
 ```javascript
@@ -45,8 +49,8 @@ base64.encodeFile('original.png');
 ##### decodeToFile(str,filepath)
 This method is used to decode messages and save the result in one file (Tested and functional with PNG Files).
 - **Arguments :**
-- ```str``` The message (in base64) you want to decode.
-- ```file``` The file path of the you want to save.
+- ```str``` - The message (in base64) you want to decode.
+- ```file``` - The file path of the you want to save.
 - **Result :**  Decoded File
 - **Example :**
 ```javascript
@@ -55,8 +59,8 @@ base64.encodeToFile('ZGF0YQ==', 'result.png') ;
 ##### encodeWithKey(str,key)
 This method is used to encode messages and encrypt messages using a key (XOR Encryption - Fast and "Secure").
 - **Arguments :**
-- ```str``` The message in plain-text.
-- ```key``` The key you want to encrypt your message.
+- ```str``` - The message in plain-text.
+- ```key``` - The key you want to encrypt your message.
 - **Result :**  Encoded encrypted message in base64.
 - **Example :**
 ```javascript
@@ -65,8 +69,8 @@ base64.encodeWithKey('base64-min npm module', 'victorfern91'); // result = FAgQE
 ```
 ##### decodeWithKey(str,key)
 - **Arguments :**
-- ```str``` The message in base64.
-- ```key``` The key used to encrypt this message.
+- ```str``` - The message in base64.
+- ```key``` - The key used to encrypt this message.
 - **Result :**  Deciphered message in plain-text.
 - **Example :**
 ```javascript
@@ -108,6 +112,5 @@ $ node node_modules/base64-min/test.js
 - Added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
 
 ## Future updates:
-- <s>Encode and decode files</s>;
 - Add compatibility with MIME, and other standards (RFC ****, etc). 
 - Unit Tests
