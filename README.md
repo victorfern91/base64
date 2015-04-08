@@ -13,14 +13,68 @@ Example:
 ```javascript
 var base64 = require('base64-min');
 ```
-### Available functions and their description
-| Module Functions | Description | Use case | Completed |
-| ---------------- | ----------- | ---- | ---------- |
-| **encode(string)**  | **Input:** Plain Text String (RAW format);</br> **Output:** Encoded String | base64.encode('tutorial')  | 100 % | 
-| **decode(string)**  | **Input:** Base64 Encoded String;</br> **Output:** Plain Text and Decoded String | base64.decode('dHV0b3JpYWw=') | 100 % |
-| **encodeFile(filepath)**  | **Input:** File Path;</br> **Output:** Encoded String | base64.encodeFile('image1.png')  | 100 % | 
-| **decodeToFile(string, filepath)**  | **Inputs:** Encoded string, File Path;</br> **Output:** File Decoded | base64.decodeToFile('ZGF0YQ==', 'res.png') | 100 % |
+### API
 
+##### encode (str)
+This method is used to encode a plain-text string to a encoded string in base64.
+- **Arguments :**
+- ```str``` The string you want to encode.
+- **Result :**  Encoded string in base64.
+- **Example :**
+```javascript
+base64.encode('base64-min npm module'); // result = YmFzZTY0LW1pbiBucG0gbW9kdWxl
+```
+##### decode (str)
+This method is used to decode a the base64 message to a plain-text string.
+- **Arguments :**
+- ```str``` The message (in base64) you want to decode.
+- **Result :**  Our message decoded in plain-text.
+- **Example :**
+```javascript
+base64.encode('YmFzZTY0LW1pbiBucG0gbW9kdWxl'); // result = base64-min npm module
+```
+##### encodeFile(file)
+This method is used to encode files into base64 string.
+- **Arguments :**
+- ```file``` The file path of the you want to encode.
+- **Result :**  Encoded File into a string in base64.
+- **Example :**
+```javascript
+base64.encodeFile('original.png');
+```
+##### decodeToFile(str,filepath)
+This method is used to decode messages and save the result in one file (Tested and functional with PNG Files).
+- **Arguments :**
+- ```str``` The message (in base64) you want to decode.
+- ```file``` The file path of the you want to save.
+- **Result :**  Decoded File
+- **Example :**
+```javascript
+base64.encodeToFile('ZGF0YQ==', 'result.png') ;
+```
+##### encodeWithKey(str,key)
+This method is used to encode messages and encrypt messages using a key (XOR Encryption - Fast and "Secure").
+- **Arguments :**
+- ```str``` The message in plain-text.
+- ```key``` The key you want to encrypt your message.
+- **Result :**  Encoded encrypted message in base64.
+- **Example :**
+```javascript
+base64.encodeWithKey('base64-min npm module', 'victorfern91'); // result = FAgQEVlGSwgbABlfBgRDGQAWEwkX
+                                                               //(in plain text is YFK_C	)
+```
+##### decodeWithKey(str,key)
+- **Arguments :**
+- ```str``` The message in base64.
+- ```key``` The key used to encrypt this message.
+- **Result :**  Deciphered message in plain-text.
+- **Example :**
+```javascript
+//Decoding with wrong key
+base64.decodeWithKey(FAgQEVlGSwgbABlfBgRDGQAWEwkX, 'npm module'); // result = zx}14)/}wew/k$.vdcly
+//Decoding with correct key
+base64.decodeWithKey(FAgQEVlGSwgbABlfBgRDGQAWEwkX, 'victorfern91'); // result = base64-min npm module
+```
 #### Install base64-min module
 At cmd, type:
 ```
@@ -39,18 +93,21 @@ $ node node_modules/base64-min/test.js
 ```
 
 ### Changelog
+**v0.3.0 :**
+- Added more two new functions: **encodeWithKey** and **decodeWithKey** (XOR Encryption - Fast and "Secure").
+
 **v0.2.2 :**
 - Minor changes, to improve JavaScript performance.
 - Important! **decodeSaveFile** function name changed to **decodeToFile**.
 
 **v0.2.1 :**
-- bug fix in encodingSystem function.
+- Bug fix in encodingSystem function.
 
 **v0.2.0 :**
-- encode process more modular (added one more private function). 
-- added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
+- Encode process more modular (added one more private function). 
+- Added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
 
 ## Future updates:
-- <s>encode and decode files</s>;
-- add compatibility with MIME, and other standards (RFC ****, etc). 
+- <s>Encode and decode files</s>;
+- Add compatibility with MIME, and other standards (RFC ****, etc). 
 - Unit Tests
