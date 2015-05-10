@@ -3,7 +3,7 @@
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
 I'm trying to add new features based in other packages to get an AIO npm module.
-Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encryptation**.
+Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encryptation**. (added MIME compability during encoding and decoding process **Note:** Actually)
 
 <a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a>
 
@@ -44,16 +44,19 @@ Example:
 ```javascript
 var base64 = require('base64-min');
 ```
-### API
+### DOCS
 
 ##### encode (str)
 This method is used to encode a plain-text string to a encoded string in base64.
 - **Arguments :**
 - ```str``` - The string you want to encode.
+- ```type``` - Encoding Type (optional) Available types: 'MIME'.
 - **Result :**  Encoded string in base64.
 - **Example :**
 ```javascript
 base64.encode('base64-min npm module'); // result = YmFzZTY0LW1pbiBucG0gbW9kdWxl
+base64.encode('base64-min npm module'', 'MIME'); // result = YmFzZTY0LW1pbiBucG0gbW9kdWxl
+                                                 // encoded string in base64, using MIME constraints
 ```
 ##### decode (str)
 This method is used to decode a the base64 message to a plain-text string.
@@ -108,6 +111,10 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
+**v0.5.0**
+- Feature: **encode** and **decode** functions compatible with MIME constraints.
+- Added new unit tests.
+
 **v0.4.1**
 - Updated README.md
 

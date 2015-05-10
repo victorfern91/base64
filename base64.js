@@ -1,11 +1,9 @@
 /**
 * node module -> Base64, created by victorfern91 (a.k.a Victor Fernandes - victorfern91[at]gmail.com)
-* Module Version : 0.3.0
-* Avaiable Functions : encoding & decoding
+* Module Version : 0.5.0
+* Avaiable Functions : encoding & decoding / MIME
 * Outputs: Coded string or Decoded string, using Base64
 */
-
-var base64 = function () {};
 
 var encodeDictionary ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 // for file function
@@ -14,7 +12,9 @@ var fs = require('fs');
 /**
 * encode function() - public method
 */
-base64.prototype.encode = function (str){
+module.exports.encode = function (str, type){
+		
+	
 	var encodedString = '';
 	// First step, divid the input bytes streams into blocks of 3 bytes.
 	var inputSliced = [];
@@ -24,7 +24,17 @@ base64.prototype.encode = function (str){
 	//encode all 3 byte blocks
 	for(i = 0, length = inputSliced.length; i < length; i++){
 		encodedString += encodingSystem(inputSliced[i]);
-	} 
+	}
+
+	// encoding type
+	switch(type){
+		case 'MIME':
+			encodedString = convertToMIME(encodedString);
+			break;
+		default:
+			break;
+	}
+	// return encoded string
 	return encodedString;
 };
 
@@ -32,7 +42,7 @@ base64.prototype.encode = function (str){
 * encodeWithKey
 * encode Messages with one key XOR 
 */
-base64.prototype.encodeWithKey = function(str, key){
+module.exports.encodeWithKey = function(str, key){
 	var strLength = str.length;
 	var keyLength = key.length;
 	var keyMsg = ''
@@ -47,7 +57,7 @@ base64.prototype.encodeWithKey = function(str, key){
 * encodeFile function() - public method
 * Only tested with the PNG Files  
 */
-base64.prototype.encodeFile = function (file){
+module.exports.encodeFile = function (file){
 	var inputData = fs.readFileSync(file);
 	var fileToStr = '';
 	for(i = 0; i < inputData.length; i++){
@@ -67,11 +77,16 @@ base64.prototype.encodeFile = function (file){
 /**
 * decode function() - public method
 */
-base64.prototype.decode = function (str){
+module.exports.decode = function (str){
+	// auto detect MIME type
+	if(str.match(/\n/) !== null){
+		str = decodeMIME(str);
+	}
 	// reverse process
 	var inputSliced = [];
 	var stringLength = str.length;
 	var decodedString = '';
+
 	//slice string into 4 byte slices
 	for(i = 0; i < stringLength; i = i + 4){
 		inputSliced.push(str.slice(i,i+4));
@@ -96,16 +111,13 @@ base64.prototype.decode = function (str){
 * decodeWithKey
 * decode Messages with one key XOR 
 */
-base64.prototype.decodeWithKey = function(str, key){
+module.exports.decodeWithKey = function(str, key){
 	var b64Decoded = this.decode(str);
 	var keyLength = key.length;
 	var decodedString = '';
 	for(i = 0, length = b64Decoded.length; i < length; i ++ ){
 		 decodedString += String.fromCharCode( b64Decoded.charCodeAt(i)  ^  key.charCodeAt(i%keyLength));
 	}
-	/*if(str.slice(-2) === '=='){
-		decodedString = decodedString.slice(0,decodedString.length-1);
-	}*/
 	return decodedString;
 }
 
@@ -113,13 +125,11 @@ base64.prototype.decodeWithKey = function(str, key){
 * decodeFile function() - public method
 * Only tested with the PNG Files  
 */
-base64.prototype.decodeToFile = function (str, filePath){
+module.exports.decodeToFile = function (str, filePath){
 	// reverse process
 	var data = this.decode(str);
 	fs.writeFileSync(filePath,data,'binary');
 };
-
-module.exports = new base64();
 
 //Functions Helpers (Private functions)
 
@@ -216,4 +226,28 @@ function decodingBlock(slice){
 function setCharAt(str,index,chr) {
 	if(index > str.length-1) return str;
 	return str.substr(0,index) + chr + str.substr(index+1);
+}
+
+/**
+* convertToMIME - private function
+*/
+function convertToMIME(str){
+	var length = str.length;
+	var result = '';
+	var lastPosition = 0;
+	for(i = 0, length = str.length; i < length ; i++){
+		if( i%76 === 0 && i != 0){
+			result += str.slice(lastPosition, i) + '\n';
+			lastPosition = i;
+			if(lastPosition + 76 > length){
+				result += str.slice(lastPosition, length);
+			}
+		}
+	}
+	return result;
+}
+
+function decodeMIME(str){
+	str = str.replace(/\r\n|\r|\n/g, '');
+	return str;
 }
