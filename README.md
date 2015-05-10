@@ -111,7 +111,7 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
-**v0.5.1**
+**v0.5.1 && v0.5.2**
 -  Updated README.md file.
 
 **v0.5.0**
