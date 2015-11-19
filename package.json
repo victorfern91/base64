@@ -1,15 +1,16 @@
 {
   "name": "base64-min",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Minimalist package, focused in best performance to encode and decode base64.",
   "main": "base64.js",
   "dependencies": {},
   "devDependencies": {
     "chai": "^2.2.0",
+    "istanbul": "^0.4.0",
     "mocha": "^2.2.4"
   },
   "scripts": {
-    "test": "./node_modules/.bin/mocha  --reporter spec"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- test/ -R spec" 
   },
   "repository": {
     "type": "git",

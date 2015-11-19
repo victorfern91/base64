@@ -31,6 +31,15 @@ $ npm test
 ```
 <img src="http://i.imgur.com/U7rayiT.png"/>
 
+### Do you want a test report?
+
+```
+$ cd ./node_modules/base64-min/
+$ npm install
+$ npm test  --coverage
+```
+<img src="http://i.imgur.com/sIZfdP8.png"/>
+
 ### And run tutorial
 ```
 $ cd ./node_modules/base64-min/
@@ -111,6 +120,9 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
+**v0.5.3**
+-  Add code covegare (mocha + istanbul)
+
 **v0.5.1 && v0.5.2**
 -  Updated README.md file.
 
