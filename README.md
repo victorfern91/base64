@@ -74,7 +74,7 @@ This method is used to decode a the base64 message to a plain-text string.
 - **Result :**  Our message decoded in plain-text.
 - **Example :**
 ```javascript
-base64.encode('YmFzZTY0LW1pbiBucG0gbW9kdWxl'); // result = base64-min npm module
+base64.decode('YmFzZTY0LW1pbiBucG0gbW9kdWxl'); // result = base64-min npm module
 ```
 ##### encodeFile(file)
 This method is used to encode files into base64 string.
@@ -93,7 +93,7 @@ This method is used to decode messages and save the result in one file (Tested a
 - **Result :**  Decoded File
 - **Example :**
 ```javascript
-base64.encodeToFile('ZGF0YQ==', 'result.png') ;
+base64.decodeToFile('ZGF0YQ==', 'result.png') ;
 ```
 ##### encodeWithKey(str,key)
 This method is used to encode messages and encrypt messages using a key (XOR Encryption - Fast and "Secure").
@@ -120,10 +120,11 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
-**v0.5.3**
+**v0.5.3 & v0.5.4**
+-  Update documentation (README.md file)
 -  Add code covegare (mocha + istanbul)
 
-**v0.5.1 && v0.5.2**
+**v0.5.1 & v0.5.2**
 -  Updated README.md file.
 
 **v0.5.0**
