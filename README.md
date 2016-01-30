@@ -1,6 +1,7 @@
 # base64 (npm base64-min)
 
 [![Build Status](https://travis-ci.org/victorfern91/base64.svg?branch=master)](https://travis-ci.org/victorfern91/base64)
+[![Coverage Status](https://coveralls.io/repos/github/victorfern91/base64/badge.svg?branch=master)](https://coveralls.io/github/victorfern91/base64?branch=master)
 
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
@@ -41,12 +42,6 @@ $ npm install
 $ npm test  --coverage
 ```
 <img src="http://i.imgur.com/sIZfdP8.png"/>
-
-### And run tutorial
-```
-$ cd ./node_modules/base64-min/
-$ node tutorial.js
-```
 
 ## How to use?
 To load module functionalities, you must use the require.js properties integrated in node.js.
