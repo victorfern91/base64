@@ -1,5 +1,7 @@
 # base64 (npm base64-min)
 
+[![Build Status](https://travis-ci.org/victorfern91/base64.svg?branch=master)](https://travis-ci.org/victorfern91/base64)
+
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
 I'm trying to add new features based in other packages to get an AIO npm module.
