@@ -29,8 +29,5 @@
   ],
   "author": "Victor Fernandes <victorfern91@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/victorfern91/base64/issues"
-  },
   "homepage": "https://github.com/victorfern91/base64"
 }
