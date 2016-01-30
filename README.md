@@ -117,6 +117,10 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
+**v1.0.0
+- Full integration with Travis-CI and coveralls.
+
+### Changelog
 **v0.5.3 & v0.5.4**
 -  Update documentation (README.md file)
 -  Add code covegare (mocha + istanbul)
