@@ -117,7 +117,7 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
-**v1.0.0
+**v1.1.0**
 - Full integration with Travis-CI and coveralls.
 
 ### Changelog
