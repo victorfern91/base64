@@ -6,11 +6,13 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^2.2.0",
+    "coveralls": "^2.11.6",
     "istanbul": "^0.4.0",
     "mocha": "^2.2.4"
   },
   "scripts": {
-    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- test/ -R spec"
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha -- test/ -R spec",
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- test/ -R spec"
   },
   "repository": {
     "type": "git",
