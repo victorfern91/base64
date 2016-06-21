@@ -5,13 +5,13 @@
 
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
-I'm trying to add new features based in other packages to get an AIO npm module.
-Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encryptation**.
+I'm trying to add new features based on other packages to get an all in one npm module.
+Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encrytion**.
 
 <a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a>
 
 ## Why use this module?
-This module contains private and public methods, it's minimalist, and focused in the best javascript performance.
+It's minimalist and focused in the best javascript performance.
 
 
 ### Install base64-min module
