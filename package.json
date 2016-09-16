@@ -1,6 +1,6 @@
 {
   "name": "base64-min",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Minimalist package, focused in best performance to encode and decode base64.",
   "main": "base64.js",
   "dependencies": {},

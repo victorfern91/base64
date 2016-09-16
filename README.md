@@ -22,7 +22,7 @@ $ npm install base64-min
 or to install this package globally, use:
 
 ```
-$ npm install -g base64-min 
+$ npm install -g base64-min
 ```
 
 ### After install run unit tests
@@ -30,7 +30,7 @@ $ npm install -g base64-min
 ```
 $ cd ./node_modules/base64-min/
 $ npm install
-$ npm test 
+$ npm test
 ```
 <img src="http://i.imgur.com/U7rayiT.png"/>
 
@@ -46,7 +46,7 @@ $ npm test  --coverage
 ## How to use?
 To load module functionalities, you must use the require.js properties integrated in node.js.
 
-Example: 
+Example:
 ```javascript
 var base64 = require('base64-min');
 ```
@@ -117,6 +117,10 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 ```
 
 ### Changelog
+**v1.2.0**
+- Added more unit tests. Now the test coverage is 100% :)
+- JSlinted all application.
+
 **v1.1.0**
 - Full integration with Travis-CI and coveralls.
 
@@ -150,8 +154,8 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result 
 - Bug fix in encodingSystem function.
 
 **v0.2.0 :**
-- Encode process more modular (added one more private function). 
+- Encode process more modular (added one more private function).
 - Added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
 
 ## Future updates:
-- Add compatibility with MIME, and other standards (RFC ****, etc). 
+- Add compatibility with MIME, and other standards (RFC ****, etc).
