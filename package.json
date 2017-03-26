@@ -15,7 +15,7 @@
   },
   "scripts": {
     "test": "istanbul test mocha -- test/ -R spec",
-    "test-travis": "instanbul cover mocha -- test/ -R spec"
+    "test-travis": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha -- test/ -R spec"
   },
   "repository": {
     "type": "git",
