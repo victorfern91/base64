@@ -1,3 +1,4 @@
+'use strict';
 
 function stringToNCharArray(str, number) {
   const charArray = [];

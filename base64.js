@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs');
 const codecUtils = require('./utils/codec-utils');
 const convert = require('./utils/convertion-utils');

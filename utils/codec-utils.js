@@ -1,3 +1,5 @@
+'use strict';
+
 const encodeDictionary = require('./constants').encodeDictionary;
 
  /**
