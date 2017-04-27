@@ -1,11 +1,4 @@
-const encodeDictionary = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-
-/**
- * This method is used for block decoding.
- * @param {string} slice
- * @return {string} decoded block
- */
-
+const encodeDictionary = require('./constants').encodeDictionary;
 
  /**
   * decodingBlock - private function
@@ -31,7 +24,7 @@ function decodingBlock(slice) {
       }
     })
     .join('');
-};
+}
 
 
 function encodingBlock(slice) {
@@ -97,4 +90,8 @@ function xorEncoding(str, key) {
     .join('');
 }
 
-module.exports = { decodingBlock, encodingBlock, decodeMIME, convertToMIME, xorEncoding };
+function isMIME(str) {
+  return /\n/.test(str);
+}
+
+module.exports = { decodingBlock, encodingBlock, decodeMIME, convertToMIME, xorEncoding, isMIME };
