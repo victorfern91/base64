@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/victorfern91/base64.svg?branch=master)](https://travis-ci.org/victorfern91/base64)
 [![Coverage Status](https://coveralls.io/repos/github/victorfern91/base64/badge.svg?branch=master)](https://coveralls.io/github/victorfern91/base64?branch=master)
 
-*Disclaimer: For node versions < 4 use the 1.2.0 version.*
+**Disclaimer: For node versions < 4 use the 1.2.0 version.**
 
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
