@@ -3,12 +3,14 @@
 [![Build Status](https://travis-ci.org/victorfern91/base64.svg?branch=master)](https://travis-ci.org/victorfern91/base64)
 [![Coverage Status](https://coveralls.io/repos/github/victorfern91/base64/badge.svg?branch=master)](https://coveralls.io/github/victorfern91/base64?branch=master)
 
+*Disclaimer: For node versions < 4 use the 1.2.0 version.*
+
 This modules can be used to encoding & decoding messages (strings) and files using base64.
 
 I'm trying to add new features based on other packages to get an all in one npm module.
 Actually **base64-min** can encode and decode: **strings**, **files** and **strings with XOR encrytion**.
 
-<a href="https://nodei.co/npm/base64-min/"><img src="https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true"></a>
+[![nodei.co](https://nodei.co/npm/base64-min.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/base64-min/)
 
 ## Why use this module?
 It's minimalist and focused in the best javascript performance.
@@ -115,47 +117,3 @@ base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'npm module'); // result = 
 //Decoding with correct key
 base64.decodeWithKey('FAgQEVlGSwgbABlfBgRDGQAWEwkX', 'victorfern91'); // result = base64-min npm module
 ```
-
-### Changelog
-**v1.2.0**
-- Added more unit tests. Now the test coverage is 100% :)
-- JSlinted all application.
-
-**v1.1.0**
-- Full integration with Travis-CI and coveralls.
-
-**v0.5.3 & v0.5.4**
--  Update documentation (README.md file)
--  Add code covegare (mocha + istanbul)
-
-**v0.5.1 & v0.5.2**
--  Updated README.md file.
-
-**v0.5.0**
-- Feature: **encode** and **decode** functions compatible with MIME constraints.
-- **Note:** Actually this is only compatible with strings.
-- Added new unit tests.
-
-**v0.4.1**
-- Updated README.md file.
-
-**v0.4.0**
-- Added Unit Tests (To run tests use command ```npm test``` after module install).
-- Bug fix in decode process.
-
-**v0.3.0 :**
-- Added more two new functions: **encodeWithKey** and **decodeWithKey** (XOR Encryption - Fast and "Secure").
-
-**v0.2.2 :**
-- Minor changes, to improve JavaScript performance.
-- Important! **decodeSaveFile** function name changed to **decodeToFile**.
-
-**v0.2.1 :**
-- Bug fix in encodingSystem function.
-
-**v0.2.0 :**
-- Encode process more modular (added one more private function).
-- Added more two new functions: **encodeFile** and **decodeSaveFile** (only tested with PNG Files).
-
-## Future updates:
-- Add compatibility with MIME, and other standards (RFC ****, etc).
