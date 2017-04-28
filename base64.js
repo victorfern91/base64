@@ -58,26 +58,23 @@ module.exports = {
     const inputStr = (codecUtils.isMIME(str)) ? codecUtils.decodeMIME(str) : str;
 
     // reverse process
-    var stringLength = str.length;
-    var decodedString = '',
-        i,
-        sliceLength;
+    let decodedString = '';
 
     // slice string into 4 byte slices
     const inputSliced = convert.stringToNCharArray(inputStr, 4);
 
-    //decoding every slice except the last one
-    for (i = 0, sliceLength = inputSliced.length; i < sliceLength; ++i) {
-        decodedString += codecUtils.decodingBlock(inputSliced[i]);
+    // decoding every slice except the last one
+    for (let i = 0, sliceLength = inputSliced.length; i < sliceLength; ++i) {
+      decodedString += codecUtils.decodingBlock(inputSliced[i]);
     }
-    //last slice
+    // last slice
     if (inputStr.slice(-1) === '=') {
-        decodedString = decodedString.slice(0, decodedString.length - 1);
+      decodedString = decodedString.slice(0, decodedString.length - 1);
     }
     if (inputStr.slice(-2) === '==') {
-        decodedString = decodedString.slice(0, decodedString.length - 1);
+      decodedString = decodedString.slice(0, decodedString.length - 1);
     }
-    //result
+    // result
     return decodedString;
   },
 

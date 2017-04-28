@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // this is necessary for node older versions in order use let and const
 
 const encodeDictionary = require('./constants').encodeDictionary;
 
@@ -10,19 +10,20 @@ const encodeDictionary = require('./constants').encodeDictionary;
 function decodingBlock(slice) {
   return slice.split('')
     .map((char, index) => {
-      switch (index) {
-        case 0:
-          char = encodeDictionary.indexOf(char) << 2;
-          char += (encodeDictionary.indexOf(slice[index + 1]) & 0x30) >> 4;
-          return String.fromCharCode(char);
-        case 1:
-          char = (encodeDictionary.indexOf(char) & 0xF) << 4;
-          char += (encodeDictionary.indexOf(slice[index + 1]) & 0x3C) >> 2;
-          return String.fromCharCode(char);
-        case 2:
-          char = (encodeDictionary.indexOf(char) & 0x3) << 6;
-          char += (encodeDictionary.indexOf(slice[index + 1]) & 0x3F);
-          return String.fromCharCode(char);
+      let decodedChar = null;
+
+      if (index === 0) {
+        decodedChar = encodeDictionary.indexOf(char) << 2;
+        decodedChar += (encodeDictionary.indexOf(slice[index + 1]) & 0x30) >> 4;
+        return String.fromCharCode(decodedChar);
+      } else if (index === 1) {
+        decodedChar = (encodeDictionary.indexOf(char) & 0xF) << 4;
+        decodedChar += (encodeDictionary.indexOf(slice[index + 1]) & 0x3C) >> 2;
+        return String.fromCharCode(decodedChar);
+      } else if (index === 2) { // index === 2
+        decodedChar = (encodeDictionary.indexOf(char) & 0x3) << 6;
+        decodedChar += (encodeDictionary.indexOf(slice[index + 1]) & 0x3F);
+        return String.fromCharCode(decodedChar);
       }
     })
     .join('');
@@ -30,56 +31,56 @@ function decodingBlock(slice) {
 
 
 function encodingBlock(slice) {
-    var encodedSlice = '',
-        j,
-        sliceLength,
-        charOne,
-        charTwo,
-        charThree,
-        charFour;
+  let encodedSlice = '';
+  let charOne;
+  let charTwo;
+  let charThree;
+  let charFour;
 
-    for (j = 0, sliceLength = slice.length; j < sliceLength; j++) {
-        switch (j) {
+  slice.split('')
+    .map((char, index) => {
+      switch (index) {
         case 0:
-            charOne = (slice.charCodeAt(j)) >> 2;
-            encodedSlice += encodeDictionary[charOne];
-            break;
+          charOne = slice.charCodeAt(index) >> 2;
+          encodedSlice += encodeDictionary[charOne];
+          break;
         case 1:
-            charTwo = (slice.charCodeAt(j - 1) & 0x3) << 4;
-            charTwo += (slice.charCodeAt(j) & 0xF0) >> 4;
-            encodedSlice += encodeDictionary[charTwo];
-            charThree = (slice.charCodeAt(j) & 0xF) << 2;
-            charThree += (slice.charCodeAt(j + 1) & 0xC0) >> 6;
-            encodedSlice += encodeDictionary[charThree];
-            break;
+          charTwo = (slice.charCodeAt(index - 1) & 0x3) << 4;
+          charTwo += (slice.charCodeAt(index) & 0xF0) >> 4;
+          encodedSlice += encodeDictionary[charTwo];
+          charThree = (slice.charCodeAt(index) & 0xF) << 2;
+          charThree += (slice.charCodeAt(index + 1) & 0xC0) >> 6;
+          encodedSlice += encodeDictionary[charThree];
+          break;
         case 2:
-            charFour = slice.charCodeAt(j) & 0x3F;
-            encodedSlice += encodeDictionary[charFour];
-            break;
-        }
-    }
-    return encodedSlice;
-};
+        default:
+          charFour = slice.charCodeAt(index) & 0x3F;
+          encodedSlice += encodeDictionary[charFour];
+          break;
+      }
+    });
+
+  return encodedSlice;
+}
 
 function decodeMIME(str) {
-    return str.replace(/\r\n|\r|\n/g, '');
+  return str.replace(/\r\n|\r|\n/g, '');
 }
 
 function convertToMIME(str) {
-    var length,
-        result = '',
-        lastPosition = 0,
-        i;
-    for (i = 0, length = str.length; i < length; ++i) {
-        if (i % 76 === 0 && i !== 0) {
-            result += str.slice(lastPosition, i) + '\n';
-            lastPosition = i;
-            if (lastPosition + 76 > length) {
-                result += str.slice(lastPosition, length);
-            }
-        }
+  let result = '';
+  let lastPosition = 0;
+
+  for (let i = 0, length = str.length; i < length; ++i) {
+    if (i % 76 === 0 && i !== 0) {
+      result += `${str.slice(lastPosition, i)}\n`;
+      lastPosition = i;
+      if (lastPosition + 76 > length) {
+        result += str.slice(lastPosition, length);
+      }
     }
-    return result;
+  }
+  return result;
 }
 
 function xorEncoding(str, key) {

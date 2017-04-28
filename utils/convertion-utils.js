@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // this is necessary for node older versions in order use let and const
 
 function stringToNCharArray(str, number) {
   const charArray = [];
